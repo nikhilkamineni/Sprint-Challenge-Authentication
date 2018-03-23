@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 const HeaderStyled = styled.div`
-  border: 1px solid black;
+  border-bottom: 5px dashed red;
   width: 100%;
   display: flex;
   flex-direction: column;

@@ -4,7 +4,8 @@ import { login } from '../actions';
 import { connect } from 'react-redux';
 
 const styles = {
-  width: '250px'
+  width: '250px',
+  margin: '20px'
 }
 
 class SignIn extends Component {

@@ -20,6 +20,9 @@ const ContentStyled = styled.div`
   flex-direction: column;
   align-items: center;
   width: 1000px;
+  margin: 15px;
+  background: #c9a700;
+  border: 5px dashed red;
 `
 
 ReactDOM.render(
