@@ -24,7 +24,8 @@ class Header extends Component {
   render() {
     return (
       <div>
-        <Link to="/">Client Auth</Link>
+        <Link to="/">Jokes Home</Link>
+        {!this.props.authenticated && <h2>Sign in for some awesome Jokezzz!</h2>}
         <ul>{this.getLinks()}</ul>
       </div>
     );
