@@ -1,12 +1,17 @@
 import React, { Component } from 'react';
 import Header from './components/header';
+import styled from 'styled-components';
+
+const AppStyled = styled.div`
+  width: 100%;
+`
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
+      <AppStyled className="App">
         <Header />
-      </div>
+      </AppStyled>
     );
   }
 }

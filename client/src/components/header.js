@@ -1,53 +1,43 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import styled from 'styled-components';
 
-const styles = {
-  border: '1px solid black',
-  width: '70%'
-}
-
-const ulStyles = {
-  listStyleType: 'none',
-  padding: '3px'
-}
-
-const liStyles = {
-  padding: '5px',
-  backgroundColor: 'green',
-}
-
-const linkStyles = {
-  textDecoration: 'none',
-  color: 'black'
-}
+const HeaderStyled = styled.div`
+  border: 1px solid black;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+`;
 
 class Header extends Component {
   getLinks() {
     if (this.props.authenticated) {
       return (
-        <li style={liStyles}>
-          <Link to="/signout" style={linkStyles}>Sign Out</Link>
+        <li>
+          <Link to="/signout">Sign Out</Link>
         </li>
       );
     }
     return [
-      <li key={1} style={liStyles}>
-        <Link to="/signin" style={linkStyles}>SIGN IN</Link>
+      <li key={1}>
+        <Link to="/signin">SIGN IN</Link>
       </li>,
-      <li key={2} style={liStyles}>
-        <Link to="/signup" style={linkStyles}>SIGN UP</Link>
+      <li key={2}>
+        <Link to="/signup">SIGN UP</Link>
       </li>
     ];
   }
 
   render() {
     return (
-      <div style={styles}>
-        <Link to="/" style={linkStyles}>Jokes Home</Link>
+      <HeaderStyled>
+        <Link to="/">Jokes Home</Link>
         {!this.props.authenticated && <h2>Sign in for some awesome Jokezzz!</h2>}
-        <ul style={ulStyles}>{this.getLinks()}</ul>
-      </div>
+        <ul>{this.getLinks()}</ul>
+      </HeaderStyled>
     );
   }
 }

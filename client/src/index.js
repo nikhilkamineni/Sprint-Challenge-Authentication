@@ -7,7 +7,7 @@ import { createStore, applyMiddleware } from 'redux';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import reducers from './reducers';
 import ReduxThunk from 'redux-thunk';
-
+import styled from 'styled-components';
 import SignIn from './components/signin';
 import Jokes from './components/jokes';
 import SignOut from './components/signout';
@@ -15,16 +15,23 @@ import SignUp from './components/signup';
 
 const createStoreWithMiddleware = applyMiddleware(ReduxThunk)(createStore);
 
+const ContentStyled = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 1000px;
+`
+
 ReactDOM.render(
   <Provider store={createStoreWithMiddleware(reducers)}>
     <Router>
-      <div>
+      <ContentStyled>
         <Route path="/" component={App} />
         <Route path="/signin" component={SignIn} />
         <Route path="/jokes" component={Jokes} />
         <Route path="/signout" component={SignOut} />
         <Route path="/signup" component={SignUp} />
-      </div>
+      </ContentStyled>
     </Router>
   </Provider>,
   document.getElementById('root'),
