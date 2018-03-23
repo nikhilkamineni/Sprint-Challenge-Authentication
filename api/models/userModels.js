@@ -12,12 +12,12 @@ const UserSchema = Schema({
     type: String,
     required: true,
     unqiue: true,
-    lowercase: true
+    lowercase: true,
   },
   password: {
     type: String,
-    required: true
-  }
+    required: true,
+  },
 });
 
 UserSchema.pre('save', function(next) {
@@ -25,6 +25,11 @@ UserSchema.pre('save', function(next) {
   // Fill this middleware in with the Proper password encrypting, bcrypt.hash()
   // if there is an error here you'll need to handle it by calling next(err);
   // Once the password is encrypted, call next() so that your userController and create a user
+  bcrypt.hash(this.password, 11, (error, hash) => {
+    if (error) return next(error);
+    this.password = hash;
+    next();
+  });
 });
 
 UserSchema.methods.checkPassword = function(plainTextPW, callBack) {
@@ -32,6 +37,10 @@ UserSchema.methods.checkPassword = function(plainTextPW, callBack) {
   // Fill this method in with the Proper password comparing, bcrypt.compare()
   // Your controller will be responsible for sending the information here for password comparison
   // Once you have the user, you'll need to pass the encrypted pw and the plaintext pw to the compare function
+  bcrypt.compare(plainTextPW, this.password, (error, isMatch) => {
+    if (error) return callBack(error);
+    callBack(null, isMatch);
+  });
 };
 
 // if you're really stuck with this at this point, you can reference this document.
