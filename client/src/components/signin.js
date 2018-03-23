@@ -3,6 +3,10 @@ import { reduxForm, Field } from 'redux-form';
 import { login } from '../actions';
 import { connect } from 'react-redux';
 
+const styles = {
+  width: '250px'
+}
+
 class SignIn extends Component {
   handleFormSubmit({ username, password }) {
     this.props.login(username, password, this.props.history);
@@ -17,7 +21,7 @@ class SignIn extends Component {
     const { handleSubmit } = this.props;
 
     return (
-      <form onSubmit={handleSubmit(this.handleFormSubmit.bind(this))}>
+      <form onSubmit={handleSubmit(this.handleFormSubmit.bind(this))} style={styles}>
         <fieldset>
           <label>Username:</label>
           <Field name="username" component="input" type="text" />
