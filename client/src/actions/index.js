@@ -12,6 +12,7 @@ export const GET_JOKES = 'GET_JOKES';
 export const CHECK_IF_AUTHENTICATED = 'CHECK_IF_AUTHENTICATED';
 
 export const authError = error => {
+  console.log('Auth Error');
   return {
     type: AUTHENTICATION_ERROR,
     payload: error,
@@ -25,7 +26,7 @@ export const register = (username, password, confirmPassword, history) => {
       return;
     }
     axios
-      .post(`${ROOT_URL}/users`, { username, password })
+      .post(`${ROOT_URL}/jokes`, { username, password })
       .then(() => {
         dispatch({
           type: USER_REGISTERED,
@@ -47,7 +48,7 @@ export const login = (username, password, history) => {
         dispatch({
           type: USER_AUTHENTICATED,
         });
-        history.push('/users');
+        history.push('/jokes');
       })
       .catch(() => {
         dispatch(authError('Incorrect username/password combo'));
@@ -68,6 +69,7 @@ export const logout = () => {
 export const getJokes = () => {
   const token = localStorage.getItem('token');
   const header = { headers: { Authorization: token } };
+  console.log('token')
   return dispatch => {
     axios
       .get(`${ROOT_URL}/jokes`, header)

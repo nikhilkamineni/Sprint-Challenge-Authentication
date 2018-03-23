@@ -5,6 +5,7 @@ import { getJokes } from '../actions';
 class Jokes extends Component {
   componentDidMount() {
     this.props.getJokes();
+    console.log(this.props)
   }
 
   render() {
