@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 
 const styles = {
   width: '250px',
+  height: '200px',
   margin: '20px'
 }
 

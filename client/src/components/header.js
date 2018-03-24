@@ -10,6 +10,22 @@ const HeaderStyled = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
+
+  .Jokes-Home {
+    font-size: 20px;
+    align-self: flex-start;
+    padding: 15px;
+  }
+  
+  ul {
+    list-style-type: none;
+    font-size: 30px;
+    margin-top: 0px;
+
+    li {
+      margin-bottom: 5px;
+    }
+  }
 `;
 
 class Header extends Component {
@@ -34,7 +50,7 @@ class Header extends Component {
   render() {
     return (
       <HeaderStyled>
-        <Link to="/">Jokes Home</Link>
+        <Link to="/" className='Jokes-Home'>Jokes Home</Link>
         {!this.props.authenticated && <h2>Sign in for some awesome Jokezzz!</h2>}
         <ul>{this.getLinks()}</ul>
       </HeaderStyled>

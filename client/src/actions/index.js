@@ -26,14 +26,15 @@ export const register = (username, password, confirmPassword, history) => {
       return;
     }
     axios
-      .post(`${ROOT_URL}/jokes`, { username, password })
+      .post(`${ROOT_URL}/users`, { username, password })
       .then(() => {
         dispatch({
           type: USER_REGISTERED,
         });
         history.push('/signin');
       })
-      .catch(() => {
+      .catch((err) => {
+        console.log(err)
         dispatch(authError('Failed to register user'));
       });
   };
@@ -69,7 +70,6 @@ export const logout = () => {
 export const getJokes = () => {
   const token = localStorage.getItem('token');
   const header = { headers: { Authorization: token } };
-  console.log('token')
   return dispatch => {
     axios
       .get(`${ROOT_URL}/jokes`, header)

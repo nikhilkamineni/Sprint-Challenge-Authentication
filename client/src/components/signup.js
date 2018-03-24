@@ -4,7 +4,9 @@ import { reduxForm, Field } from 'redux-form';
 import { register } from '../actions';
 
 const styles = {
-  width: '250px'
+  width: '250px',
+  height: '200px',
+  margin: '20px'
 }
 
 class SignUp extends Component {
@@ -24,7 +26,7 @@ class SignUp extends Component {
       <form onSubmit={handleSubmit(this.handleFormSubmit.bind(this))} style={styles}>
         <fieldset>
           <label>Username:</label>
-          <Field name="username" component="input" type="text" />
+          <Field name="username" component="input" type="text" placholder="User Name"/>
         </fieldset>
         <fieldset>
           <label>Password:</label>
